@@ -1,0 +1,11 @@
+{
+  "name": "clealeroux_5_10082021",
+  "version": "1.0.0",
+  "description": "orinoco",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch public/fontend/sass/style.scss:public/fontend/style.css --style compressed"
+  },
+  "author": "clea",
+  "license": "ISC"
+}

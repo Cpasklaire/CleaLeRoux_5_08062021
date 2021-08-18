@@ -1,0 +1,25 @@
+.produit
+{
+    h1 
+    {
+        text-align: center;
+        margin: 2%;
+        font-family: $font-titre;
+        font-size: 5em;
+    }
+    .image
+    {
+        border: solid $couleur-primaire;
+        border-radius: 5%;
+        overflow: hidden;
+    }
+.dropdown button
+{
+    background-color: $couleur-tertiaire;
+    border-color: $couleur-secondaire;
+    color: $couleur-secondaire;
+}
+
+    margin-bottom: 5%;
+
+}

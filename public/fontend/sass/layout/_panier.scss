@@ -1,0 +1,48 @@
+.panier
+{
+    margin-top: 2%;
+
+    .container
+    {
+        height: 200px;
+        margin-top: 1%;
+        box-shadow: $couleur-ombre 3px 3px 1px;
+        background-color: $couleur-tertiaire-claire;
+        padding-left: 0;
+
+            img 
+            {
+                height: 200px;
+                width: 70%;
+            }
+            .img-thumbnail
+            {
+                background-color: $couleur-primaire;
+            }   
+    }
+    form 
+    {
+        margin-right: 5.5%;
+        margin-left: 5.5%;
+        margin-top: 3%;
+        margin-bottom: 3%;
+        border: $couleur-primaire solid;
+        border-radius: 20px;
+        padding: 3%;
+
+        .form-check-input:checked {
+            background-color: $couleur-secondaire;
+            border-color: $couleur-secondaire;}
+            .btn-primary:hover {
+                color: #fff;
+                background-color: $couleur-primaire;
+                border-color: $couleur-primaire;
+            }
+            .btn-primary {
+                color: #fff;
+                background-color: $couleur-secondaire;
+                border-color: $couleur-secondaire;
+            }
+    }
+
+}

@@ -1,0 +1,40 @@
+.home
+{
+    .sm 
+    {margin-top: 20%;
+        .card
+        {
+            height: 330px;
+            img 
+            {
+                height: 200px;
+            }
+        }
+    }
+    .lg
+    {
+        margin-top: 2%;
+        .card 
+        {
+            height: 500px;
+            img 
+            {
+                height: 350px;
+            }        
+        }    
+        em 
+        {
+            position: absolute;
+            z-index: 1;
+            background-color: #8F5BFE;
+            right: 30%;
+            top: 20%;
+            border-radius: 5px;
+            padding: 1%;
+            font-style: normal;
+            font-weight: 900;
+            color: $couleur-tertiaire;
+        }
+        
+    }
+}

@@ -1,5 +1,6 @@
 /* https://codepen.io/quintonjason/pen/mybarZ */
-
+.perdu
+{
 svg {
     display: block;
     width: 100%;
@@ -44,3 +45,4 @@ svg {
     animation: bowspin .5s infinite;
     -webkit-animation-timing-function: linear;
   }
+}

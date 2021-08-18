@@ -9,6 +9,5 @@
   "author": "clea",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.1.0"
   }
 }

@@ -1,10 +1,27 @@
 header
 {
-    background-color: $couleur-tertiaire-fonce;
+    background-color: $couleur-tertiaire;
     box-shadow: $couleur-ombre 0px 2px 5px;
+
+    .navbar-light
+    {
+        background-color: $couleur-tertiaire;
+        box-shadow: $couleur-ombre 0px 2px 5px;
+    }
 
     h1
     {
-        font-family: 'unashamed'; 
+        font-family: $font-titre;
     }
+
+    .offcanvas
+    {
+        background-color: $couleur-tertiaire;
+    }
+}
+
+footer
+{
+    background-color: $couleur-tertiaire;
+    padding-top: 1%;
 }

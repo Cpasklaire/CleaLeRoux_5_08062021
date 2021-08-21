@@ -7,7 +7,7 @@ fetch(apiProductListUrl)
             renderList(data);
         }
     );
-    
+
 function renderList(data)
 {
     let teddy = null;
@@ -38,7 +38,6 @@ function renderList(data)
             row.id = 'colonne'+i.toString();
 
             document.getElementById('retour'+i.toString()).appendChild(row);
-            
         }
 
         //création container colonne//
@@ -54,7 +53,7 @@ function renderList(data)
         teddy.classList.add('mb-3');
         teddy.classList.add('text-decoration-none');
         teddy.id = 'carte'+i.toString();
-        teddy.href = 'public/page/produit.html';    
+        teddy.href = 'public/page/produit.html'+ data[i]._id;    
         teddy.innerHTML += '<img src="' + data[i].imageUrl + '" alt="Ours en peluche ' + data[i].name + '" class="card-img-top">';
 
         document.getElementById('ours'+i.toString()).appendChild(teddy);
@@ -66,10 +65,7 @@ function renderList(data)
         card.innerHTML += '<p class="card-text">' + data[i].description + '</p>';
             
         document.getElementById('carte'+i.toString()).appendChild(card);
-
-
-            
+           
         //item.innerHTML += '<span class="price">' + convertPrice(data[i].price) +  '&euro;</s//
-            
     }
 }

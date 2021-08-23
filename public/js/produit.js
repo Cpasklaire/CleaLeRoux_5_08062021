@@ -1,36 +1,28 @@
-let apiProductListUrl = 'http://localhost:3000/api/teddies';
+let urlParams;
+let id_num;
+urlParams = new URLSearchParams(window.location.search);
+id_num = urlParams.get('id');
+
+let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id_num.toString();
 fetch(apiProductListUrl)
     .then(response => response.json())
     .then(data => 
         {
             console.log(data);
-            loadTeddy();               
+            renduTitre(data);
+            renduImage(data);
+            renduDescription(data);  
+            renduPersonalisation(data);                
         }   
     )
-
-    function loadTeddy()
-    {
-        let urlParams 
-        urlParams = URLSearchParams(windows.location.search);
-        console.log('test');
-
-        let id_num;
-        id_num = urlParams.get('id');
-        let goodteddy=data.filter(teddy => {teddy._id===id_num});
-
-        renduTitre(goodteddy);
-        renduImage(goodteddy);
-        renduDescription(goodteddy);  
-        renduPersonalisation(goodteddy); 
-    }   
-     
+   
     function renduTitre(data)
     {
         let i=0
-        console.log(data[i].name);
+        console.log(data.name);
 
         titre = document.createElement('h1');
-        titre.innerHTML +=  data[i].name;
+        titre.innerHTML +=  data.name;
 
         document.getElementById('titre').appendChild(titre);
     }
@@ -38,13 +30,13 @@ fetch(apiProductListUrl)
     function renduImage(data)
     {
         let i=0
-        console.log(data[i].imageUrl);
+        console.log(data.imageUrl);
 
         image = document.createElement('img');
         image.classList.add('d-block');
         image.classList.add('w-100');
-        image.alt = 'Ours en peluche' + data[i].name;
-        image.src = data[i].imageUrl
+        image.alt = 'Ours en peluche' + data.name;
+        image.src = data.imageUrl
 
         document.getElementById('image').appendChild(image);
     }
@@ -52,24 +44,23 @@ fetch(apiProductListUrl)
     function renduDescription(data)
     {
         let i=0
-        console.log(data[i].description);
+        console.log(data.description);
 
         description = document.createElement('p');
-        description.innerHTML += data[i].description
+        description.innerHTML += data.description
 
         document.getElementById('description').appendChild(description);
     }
 
     function renduPersonalisation(data)
     {
-        for(let i=0; i < data[0].colors.length; i++)
+        for(let i=0; i < data.colors.length; i++)
         {
-        console.log(data[0].colors[i]);
+        console.log(data.colors[i]);
 
         pelage = document.createElement('li');
-        pelage.innerHTML += '<a href="#" class="dropdown-item">' + data._id[0].colors[i] + '</a>';
+        pelage.innerHTML += '<a href="#" class="dropdown-item">' + data.colors[i] + '</a>';
 
         document.getElementById('couleurappel').appendChild(pelage);
-
         }
     }

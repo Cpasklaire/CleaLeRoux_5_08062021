@@ -4,13 +4,26 @@ fetch(apiProductListUrl)
     .then(data => 
         {
             console.log(data);
-            renduTitre(data);
-            renduImage(data);
-            renduDescription(data);  
-            renduPersonalisation(data);     
+            loadTeddy();               
         }   
     )
 
+    function loadTeddy()
+    {
+        let urlParams 
+        urlParams = URLSearchParams(windows.location.search);
+        console.log('test');
+
+        let id_num;
+        id_num = urlParams.get('id');
+        let goodteddy=data.filter(teddy => {teddy._id===id_num});
+
+        renduTitre(goodteddy);
+        renduImage(goodteddy);
+        renduDescription(goodteddy);  
+        renduPersonalisation(goodteddy); 
+    }   
+     
     function renduTitre(data)
     {
         let i=0
@@ -54,7 +67,7 @@ fetch(apiProductListUrl)
         console.log(data[0].colors[i]);
 
         pelage = document.createElement('li');
-        pelage.innerHTML += '<a href="#" class="dropdown-item">' + data[0].colors[i] + '</a>';
+        pelage.innerHTML += '<a href="#" class="dropdown-item">' + data._id[0].colors[i] + '</a>';
 
         document.getElementById('couleurappel').appendChild(pelage);
 

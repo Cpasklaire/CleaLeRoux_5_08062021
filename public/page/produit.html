@@ -113,16 +113,17 @@
       </div>
     </header>
     
-    <!-- main mobile -->
     <main class="produit">
 
-      <div class="lg xl xxl"> <!-- main desktop -->
+
+        <script src="/public/js/functions.js"></script>        
         <script src="/public/js/produit.js"></script>
+
         <span id="titre"> </span>
 
-        <div class="container"> <!-- image -->
+        <div class="container"> 
           <div class="row">
-            <div class="col image">
+            <div class="col image"><!-- image -->
               <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -145,17 +146,20 @@
             <div class="col"> <!-- descritpion -->
               <p class="text-start">
                 Description : 
-                <div id="description"></div>      
-                Personalisez votre ami
+                <div id="description"></div>
+                
+                <div id="prix"></div>      
+                Personalisez le pelage de votre ami
               </p>
 
-              <div class="dropdown"> <!-- selection -->
+                <div id="couleurappel"></div>
+              <!--<div class="dropdown">  selection 
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                   Pelage
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="couleurappel">
                 </ul>
-              </div>
+              </div>-->
 
               <!-- ajouter -->
               <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
@@ -165,30 +169,28 @@
             </div>
           </div>
         </div>
-      </div>
     </main>
     
     <!-- footer -->
-    <footer>
-      <div class="container sticky-bottom navbar-light bg-light">
+    <footer class="footer">
+      <div class="container fixed-bottom">
         <div class="row">
           <div class="col">
             <nav class="navbar">
-              <ul class="list-unstyled">
-                Nos partenaires
-                <li><a href="https://cpasklaire.github.io/CleaLeRoux_2_08062021/">Reservia</a></li>
-                <li><a href="https://cpasklaire.github.io/CleaLeRoux_3_23062021/">OhMyFood</a></li>
-                <li><a href="https://cpasklaire.github.io/CleaLeRoux_4_19072021/">La chouette agence</a></li>  
+              <ul class="list-unstyled row">
+                <span>Nos partenaires </span> 
+                <li class="col"><a href="https://cpasklaire.github.io/CleaLeRoux_2_08062021/">Reservia</a></li>
+                <li class="col"><a href="https://cpasklaire.github.io/CleaLeRoux_3_23062021/">OhMyFood</a></li>
+                <li class="col"><a href="https://cpasklaire.github.io/CleaLeRoux_4_19072021/">La chouette agence</a></li>  
               </ul>
             </nav>
           </div>
 
-          <div class="col">
+          <div class="col col-lg-2">
             <a href="4004.html">Qui sommens nous ?</a>
           </div>
         </div>
       </div>
-    </footer>
-
+    </footer>  
   </body>
 </html>

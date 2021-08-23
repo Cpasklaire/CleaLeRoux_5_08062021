@@ -43,6 +43,7 @@ function renderList(data)
         //création container colonne//
         col = document.createElement('div');
         col.classList.add('col');
+        col.classList.add('card-group');
         col.id = 'ours'+i.toString();
 
         document.getElementById('colonne'+i.toString()).appendChild(col);  
@@ -54,14 +55,14 @@ function renderList(data)
         teddy.classList.add('text-decoration-none');
         teddy.id = 'carte'+i.toString();
         teddy.href = 'public/page/produit.html?id='+ data[i]._id;    
-        teddy.innerHTML += '<img src="' + data[i].imageUrl + '" alt="Ours en peluche ' + data[i].name + '" class="card-img-top">';
+        teddy.innerHTML += '<img src="' + data[i].imageUrl + '" alt="Ours en peluche ' + data[i].name + '" class="card-img">';
 
         document.getElementById('ours'+i.toString()).appendChild(teddy);
 
         //création container card//
         card = document.createElement('div');
         card.classList.add('card-body');
-        card.innerHTML += '<h5 class="card-title">' + data[i].name + '</h5>';
+        card.innerHTML += '<div class="container card-title"><div class="row"><div class="col"><h5 class="text-start" >' + data[i].name + '</h5></div>' + '<div class="col text-end"><spam class="prix fw-bold">' + formatPrice(data[i].price) + '</spam></div></div></div>';
         card.innerHTML += '<p class="card-text">' + data[i].description + '</p>';
             
         document.getElementById('carte'+i.toString()).appendChild(card);

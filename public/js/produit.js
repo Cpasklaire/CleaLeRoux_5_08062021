@@ -12,7 +12,8 @@ fetch(apiProductListUrl)
             renduTitre(data);
             renduImage(data);
             renduDescription(data);  
-            renduPersonalisation(data);                
+            renduPersonalisation(data);
+            renduPrix(data);                
         }   
     )
    
@@ -47,7 +48,7 @@ fetch(apiProductListUrl)
         console.log(data.description);
 
         description = document.createElement('p');
-        description.innerHTML += data.description
+        description.innerHTML += '<div class="description">' + data.description + '</div>';
 
         document.getElementById('description').appendChild(description);
     }
@@ -56,11 +57,23 @@ fetch(apiProductListUrl)
     {
         for(let i=0; i < data.colors.length; i++)
         {
-        console.log(data.colors[i]);
-
+            console.log(data.colors[i]);
+        
         pelage = document.createElement('li');
-        pelage.innerHTML += '<a href="#" class="dropdown-item">' + data.colors[i] + '</a>';
+        pelage.innerHTML += '<img src="../fontend/images/' + data.colors[i] + '.jpg" alt="Ours en peluche ' + data.colors[i] + '" class="card-img" title="Disabled tooltip">';
+        pelage.innerHTML += '<a href="../fontend/images/' + data.colors[i] + '.jpg">' + data.colors[i] + '</a>';
 
         document.getElementById('couleurappel').appendChild(pelage);
         }
+    }
+
+    function renduPrix(data)
+    {
+        let i=0
+        console.log(formatPrice(data.price));
+
+        price = document.createElement('p');
+        price.innerHTML += formatPrice(data.price);
+
+        document.getElementById('prix').appendChild(price);
     }

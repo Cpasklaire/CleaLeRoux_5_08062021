@@ -1,26 +1,32 @@
-main .home
+main
 {
-    .sm 
-    {margin-top: 20%;
-        .card
-        {
-            height: 330px;
-            img 
-            {
-                height: 200px;
-            }
-        }
-    }
-    .lg
+    margin-top: 110px;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 110px;
+
+    img 
     {
-        margin-top: 2%;
-        .card 
+        width: 100%;
+        height: 75%;
+    }
+
+    .card
+    {
+        border: 2px solid $couleur-primaire;
+        border-radius: 20px;
+        overflow: hidden;
+
+        h5 
         {
-            height: 500px;
-            img 
-            {
-                height: 350px;
-            }        
-        }          
+            font-family: $font-titre;
+            font-size: 3em;
+            line-height: 0.5
+        }
+
+        .card-text
+        {
+            text-align: center;
+        }
     }
 }

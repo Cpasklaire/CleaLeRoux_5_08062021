@@ -47,8 +47,8 @@ fetch(apiProductListUrl)
         let i=0
         console.log(data.description);
 
-        description = document.createElement('p');
-        description.innerHTML += '<div class="description">' + data.description + '</div>';
+        description = document.createElement('div');
+        description.innerHTML += '<p class="description">' + data.description + '</p>';
 
         document.getElementById('description').appendChild(description);
     }
@@ -60,7 +60,7 @@ fetch(apiProductListUrl)
             console.log(data.colors[i]);
         
         pelage = document.createElement('li');
-        pelage.innerHTML += '<img src="../fontend/images/' + data.colors[i] + '.jpg" alt="Ours en peluche ' + data.colors[i] + '" class="card-img" title="Disabled tooltip">';
+        pelage.innerHTML += '<img src="../fontend/images/' + data.colors[i] + '.jpg" alt="Ours en peluche ' + data.colors[i] + '" class="card-img"></br>';
         pelage.innerHTML += '<a href="../fontend/images/' + data.colors[i] + '.jpg">' + data.colors[i] + '</a>';
 
         document.getElementById('couleurappel').appendChild(pelage);

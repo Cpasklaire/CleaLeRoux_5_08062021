@@ -4,11 +4,57 @@
     {
         display: none;
     }
+
 }
 @media (max-width: 992px) 
 { 
     .xl
     {
         display: none;
+    }  
+
+    footer 
+    {
+        .fixed-bottom
+        {
+            position: static;
+            padding: 1%;
+        }
+        .list-unstyled
+        {
+            flex-direction: column;
+        }
+    }
+
+    .home
+    {
+        margin-bottom: 0px;
+        .row
+        {
+            flex-direction: column;
+        }
+    }
+
+    .produit
+    {
+        .row
+        {
+            flex-direction: column;
+
+            .image 
+            {
+                margin-bottom: 5%;
+            }
+            .text-start
+            {
+                border: none;
+                padding: 0%;
+            }
+        }
+    }
+    
+    .perdu
+    {
+        margin-bottom: 22%;
     }
 }

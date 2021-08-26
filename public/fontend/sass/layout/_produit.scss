@@ -49,13 +49,15 @@
             }
         }
     }
-.dropdown button
-{
-    background-color: $couleur-tertiaire;
-    border-color: $couleur-secondaire;
-    color: $couleur-secondaire;
-}
+    .form-select
+    {
+        border-color: $couleur-primaire;
+        &:focus
+        {
+            border-color: $couleur-secondaire;
+            box-shadow: 0 0 0 0.25rem $couleur-secondaire-transparent;;
+        }
+    }
 
-    margin-bottom: 5%;
 
 }

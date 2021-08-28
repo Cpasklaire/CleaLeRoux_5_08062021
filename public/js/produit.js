@@ -1,3 +1,5 @@
+let basketItems = getBasketItems();
+
 let urlParams;
 let id_num;
 urlParams = new URLSearchParams(window.location.search);
@@ -11,6 +13,7 @@ fetch(apiProductListUrl)
             console.log(data);
             renduTitre(data);
             renduImage(data);
+            //renduImageColor(data);
             renduDescription(data);  
             renduPersonalisationXL(data);
             renduPersonalisationSM(data);
@@ -20,9 +23,6 @@ fetch(apiProductListUrl)
    
     function renduTitre(data)
     {
-        let i=0
-        console.log(data.name);
-
         titre = document.createElement('h1');
         titre.innerHTML +=  data.name;
 
@@ -31,23 +31,34 @@ fetch(apiProductListUrl)
 
     function renduImage(data)
     {
-        let i=0
-        console.log(data.imageUrl);
-
         image = document.createElement('img');
         image.classList.add('d-block');
         image.classList.add('w-100');
+        image.classList.add('active');
         image.alt = 'Ours en peluche' + data.name;
         image.src = data.imageUrl
+        
 
         document.getElementById('image').appendChild(image);
     }
+    /*function renduImageColor(data)
+    {
+        for(let i=0; i < data.colors.length; i++)
+        {
+        imageColor = document.createElement('div');
+        imageColor.classList.add('carousel-item');
+        imageColor.innerHTML += '<img src="../fontend/images/'+ data.name +'.'+data.colors[i]+'.jpg" class="d-block w-100" alt="Ours en peluche' + data.name +'">';
+
+        document.getElementById('imagecolors').appendChild(imageColor);
+        }
+        if (i=0)
+        {
+            imageColor.classList.add('active');
+        }      
+    }*/
 
     function renduDescription(data)
     {
-        let i=0
-        console.log(data.description);
-
         description = document.createElement('div');
         description.innerHTML += '<p class="description">' + data.description + '</p>';
 
@@ -83,11 +94,14 @@ fetch(apiProductListUrl)
 
     function renduPrix(data)
     {
-        let i=0
-        console.log(formatPrice(data.price));
-
         price = document.createElement('p');
         price.innerHTML += formatPrice(data.price);
 
         document.getElementById('prix').appendChild(price);
     }
+
+    document.getElementById('ajouter').addEventListener('click', function(ici) { 
+        console.log('test');
+        console.log(ici.target);
+        addToBasket(id_num, 'pink');
+    });

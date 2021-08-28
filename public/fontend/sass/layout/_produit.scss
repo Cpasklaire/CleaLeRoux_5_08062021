@@ -56,8 +56,29 @@
         &:focus
         {
             border-color: $couleur-secondaire;
-            box-shadow: 0 0 0 0.25rem $couleur-secondaire-transparent;;
+            box-shadow: 0 0 0 0.25rem $couleur-secondaire-transparent;
         }
+    }
+    .ajouter
+    {
+        border: solid 2px $couleur-secondaire;
+        border-radius: 20px;
+        width: 30%;
+        height: 20%;
+        margin-top: 5%;
+        margin-left: 33%;
+
+        background-color: $couleur-tertiaire;
+        &:hover
+        {
+            box-shadow: 0 0 0 0.25rem $couleur-secondaire-transparent;
+        }
+        span 
+        {
+            color: $couleur-secondaire;
+            size: 20px;
+        }
+        
     }
 
 

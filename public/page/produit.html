@@ -34,7 +34,7 @@
                     <a class="nav-link active" aria-current="page" href="4004.html">Mon compte</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="produit.html">Nouveaux à l'adoption</a>
+                    <a class="nav-link" href="4004.html">Nouveaux à l'adoption</a>
                   </li>        
                   <form class="d-flex"> <!-- Recherche -->
                     <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Search">
@@ -84,7 +84,7 @@
                   <a class="nav-link active" aria-current="page" href="4004.html">Mon compte</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="produit.html">Nouveaux à l'adaption</a>
+                  <a class="nav-link" href="4004.html">Nouveaux à l'adaption</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="4004.html" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -116,9 +116,8 @@
     <main class="produit">
 
 
-        <script src="/public/js/functions.js"></script>        
-        <script src="/public/js/produit.js"></script>
 
+ 
         <span id="titre"> </span>
 
         <div class="container"> 
@@ -128,7 +127,7 @@
                 <div class="carousel-indicators">
                   <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                 </div>
-                <div class="carousel-inner">
+                <div class="carousel-inner" id="imagecolors">
                   <div class="carousel-item active" id="image">
                   </div>
                 </div>
@@ -157,12 +156,16 @@
                     <option selected >Personalisez le pelage</option>
                   </select>
                 </div>
+
+                <button class="ajouter" id="ajouter"><!-- ajouter -->
+                  <span class="xl">Adopter</span>
+                  <div class="sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#8F5BFE" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                      <path d="M8 0a1 1 0 0 1 1 1v6h6a1 1 0 1 1 0 2H9v6a1 1 0 1 1-2 0V9H1a1 1 0 0 1 0-2h6V1a1 1 0 0 1 1-1z"/>
+                    </svg>
+                  </div>  
+                </button>
             </div>
-              <!-- ajouter -->
-              <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-bag-plus" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M8 7.5a.5.5 0 0 1 .5.5v1.5H10a.5.5 0 0 1 0 1H8.5V12a.5.5 0 0 1-1 0v-1.5H6a.5.5 0 0 1 0-1h1.5V8a.5.5 0 0 1 .5-.5z"/>
-                <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
-              </svg>     
           </div>
         </div>
     </main>
@@ -187,6 +190,10 @@
           </div>
         </div>
       </div>
-    </footer>  
+    </footer>          
+    
+    <script src="/public/js/functions.js"></script>       
+    <script src="/public/js/produit.js"></script>
+  
   </body>
 </html>

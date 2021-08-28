@@ -34,3 +34,5 @@ fetch(apiProductListUrl)
         document.getElementById('resume').appendChild(resume);
     }
 
+    //récuper getbascketitems le panier ou récupérer tout les ours (API)
+    //calculer prix

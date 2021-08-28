@@ -13,9 +13,6 @@ function renderList(data)
     let teddy = null;
     for(let i=0; i < data.length; i++)
     {
-            
-        console.log(data[i].name);
-
         //création container d'appel//
 
         appel = document.createElement('div');
@@ -66,8 +63,6 @@ function renderList(data)
         card.innerHTML += '<p class="card-text">' + data[i].description + '</p>';
             
         document.getElementById('carte'+i.toString()).appendChild(card);
-           
-        //item.innerHTML += '<span class="price">' + convertPrice(data[i].price) +  '&euro;</s//
     }
 }
 

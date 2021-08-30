@@ -12,8 +12,15 @@ fetch(apiProductListUrl)
 
 let basketItems = getBasketItems();     
 console.log(basketItems);
+for (let i = 0 ; i < basketItems.length; i++)
+    {
+        basketItems[i].id = i;
+        const basketItem = basketItems[i]
+        panierArticle(i);
+        fetchProduct(basketItems[i].id).then(data => panierDetails(basketItem, data));
+    }
     /*de localStorage à teddies*/
-    for (var i = 0 ; i < basketItems.length; i++) 
+/*    for (var i = 0 ; i < basketItems.length; i++) 
     {
 console.log('start boucle');
         data = fetchProduct(basketItems[i].id);
@@ -24,7 +31,7 @@ console.log(data);
         //panierResume(data, basketItems[i].qty, basketItems[i].color);
         //panierResume(i);
         //panierImage(data);
-    }
+    }*/
 console.log('end boucle');
 
     /*Création de la ligne par article*/
@@ -40,7 +47,7 @@ console.log('end boucle');
     }
 
     /*Création de l'article*/
-    function panierDetails(data, qty, color)
+    function panierDetails(basketItem, data)
     {
         /*image*/
         image = document.createElement('div');

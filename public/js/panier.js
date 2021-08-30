@@ -18,6 +18,7 @@ for (let i = 0 ; i < basketItems.length; i++)
         panierArticle(i);
         fetchProduct(basketItems[i].id).then(data => panierDetails(basketItem, data));
     }
+
     /*de localStorage à teddies*/
 /*    for (var i = 0 ; i < basketItems.length; i++)
     {
@@ -106,5 +107,3 @@ console.log('end script panier');
     }*/
 
 
-// Init
-renderBasketPage()

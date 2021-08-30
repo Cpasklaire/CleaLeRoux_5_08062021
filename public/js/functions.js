@@ -5,17 +5,17 @@ function formatPrice(price)
 }
 
 /* Initialisation localStorage*/
-function getBasketItems() 
+function getBasketItems()
 {
     let basketItemsData = JSON.parse(localStorage.getItem('basketItems'));
     if (!basketItemsData) basketItemsData=[];
-    return basketItemsData    
+    return basketItemsData
 }
 
 /* Items du localStorage*/
 function addToBasket(id_num, color)
 {
-    let item = 
+    let item =
     {
         id:id_num,
         qty:1,
@@ -28,25 +28,21 @@ function addToBasket(id_num, color)
 }
 
 /* passer du localStorage au dataTeddies par l'id*/
+/* promise function */
 function fetchProduct(id)
 {
-console.log('start fetchProduct');
+    console.log('start fetchProduct');
     let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id.toString();
-console.log('let fetchProduct');
-        fetch(apiProductListUrl)
-            .then(response => 
-                {
-                    response.json();
-console.log('json reponse');
-                }
-            )
-            .then(data => 
-                {
-console.log('coucou data');
-                    return data
-                }
-            )
-console.log('end fetchProduct');
+    console.log('let fetchProduct');
+    return fetch(apiProductListUrl)
+    .then(response => response.json())
+    .then(data =>
+        {
+            console.log(data);
+            return data
+        }
+    )
+    .catch(error => console.warn(error));
 }
 
 /*Badge*/

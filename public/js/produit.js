@@ -10,8 +10,7 @@ fetch(apiProductListUrl)
     .then(response => response.json())
     .then(data => 
         {
-            //console.log(data);
-            //console.log("hello world");
+            renduBasketBadge();
             renduTitre(data);
             renduImage(data);
             renduImageColor(data);
@@ -31,31 +30,27 @@ fetch(apiProductListUrl)
     }
 
     function renduImage(data)
-    {
-        image = document.createElement('img');
-        image.classList.add('d-block');
-        image.classList.add('w-100');
-        //image.classList.add('active');
-        image.alt = 'Ours en peluche' + data.name;
-        image.src = data.imageUrl
-        
+    {   
+        let i=0
 
-        document.getElementById('image').appendChild(image);
+        image = document.createElement('div');
+        image.classList.add('carousel-item');
+        image.classList.add('active');
+        image.innerHTML += '<img src="../fontend/images/'+ data.name +'.'+data.colors[i]+'.jpg" class="d-block w-100" alt="Ours en peluche' + data.name +'">';
+
+        document.getElementById('imagecolors').appendChild(image);
     }
+
     function renduImageColor(data)
     {
        
-        for(let i=0; i < data.colors.length; i++)
+        for(let i=1; i < data.colors.length; i++)
         {        
 
         imageColor = document.createElement('div');
-        imageColor.id="oursthcfhtht"+i.toString();
         imageColor.classList.add('carousel-item');
         imageColor.innerHTML += '<img src="../fontend/images/'+ data.name +'.'+data.colors[i]+'.jpg" class="d-block w-100" alt="Ours en peluche' + data.name +'">';
-        /*if (i==0)
-        {
-            imageColor.classList.add('active');
-        }  */
+
         document.getElementById('imagecolors').appendChild(imageColor);
         }
     }
@@ -72,7 +67,6 @@ fetch(apiProductListUrl)
     {
         for(let i=0; i < data.colors.length; i++)
         {
-            //console.log(data.colors[i]);
         
         pelageXL = document.createElement('li');
         pelageXL.innerHTML += '<img src="../fontend/images/' + data.colors[i] + '.jpg" alt="Ours en peluche ' + data.colors[i] + '" class="card-img"></br>';
@@ -85,7 +79,6 @@ fetch(apiProductListUrl)
     {
         for(let i=0; i < data.colors.length; i++)
         {
-            //console.log(data.colors[i]);
         
         pelageSM = document.createElement('option');
         pelageSM.value += data.colors[i]
@@ -103,8 +96,7 @@ fetch(apiProductListUrl)
         document.getElementById('prix').appendChild(price);
     }
 
-    document.getElementById('ajouter').addEventListener('click', function(ici) { 
-        console.log('test');
-        console.log(ici.target);
-        addToBasket(id_num, 'pink');
+    document.getElementById('ajouter').addEventListener('click', function(ajouter) { 
+        //console.log(ajouter.target);
+        addToBasket(id_num, 'color');
     });

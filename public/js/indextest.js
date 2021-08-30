@@ -5,6 +5,7 @@ fetch(apiProductListUrl)
         {
             console.log(data);
             renderList(data);
+            renduBasketBadge();
         }
     );
 

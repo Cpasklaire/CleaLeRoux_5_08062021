@@ -9,10 +9,17 @@ fetch(apiProductListUrl)
         }
     )*/
 
-function renderBasketPage() {
-    let data;
-    let basketItems = getBasketItems();
-    for (let i = 0 ; i < basketItems.length; i++)
+let basketItems = getBasketItems();
+console.log(basketItems);
+for (let i = 0 ; i < basketItems.length; i++)
+    {
+        basketItems[i].id = i;
+        const basketItem = basketItems[i]
+        panierArticle(i);
+        fetchProduct(basketItems[i].id).then(data => panierDetails(basketItem, data));
+    }
+    /*de localStorage à teddies*/
+/*    for (var i = 0 ; i < basketItems.length; i++)
     {
         basketItems[i].idx = i;
         const basketItem = basketItems[i]

@@ -98,5 +98,5 @@ fetch(apiProductListUrl)
 
     document.getElementById('ajouter').addEventListener('click', function(ajouter) { 
         //console.log(ajouter.target);
-        addToBasket(id_num, 'color');
+        addToBasket(id_num, 'vert');
     });

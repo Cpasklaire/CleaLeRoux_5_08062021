@@ -4,12 +4,14 @@
 
     .container
     {
+        .row
+        {
         height: 200px;
         margin-top: 1%;
         box-shadow: $couleur-ombre 3px 3px 1px;
         background-color: $couleur-tertiaire-claire;
         padding-left: 0;
-
+        }
             img 
             {
                 height: 200px;

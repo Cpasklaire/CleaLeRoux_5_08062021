@@ -9,7 +9,7 @@
     <!-- mise en page -->
     <link rel="stylesheet" href="../fontend/style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>-->
   </head>
 
   <body class="d-flex flex-column h-100">
@@ -117,16 +117,7 @@
     <main class="panier" >
 
       <div class="container" id="article">
-
-        <div class="row">
-          <div class="col">
-          </div>
-          <div class="col">
-          </div>
-          <div class="col">
-            Total
-          </div>
-        </div>
+        <!-- produit panier par JS-->
       </div>
 
       <!-- formulaire -->
@@ -214,26 +205,26 @@
     </main>
     
     <!-- footer -->
-    <footer>
-      <div class="container sticky-bottom navbar-light bg-light">
+    <footer class="footer">
+      <div class="container fixed-bottom">
         <div class="row">
           <div class="col">
             <nav class="navbar">
-              <ul class="list-unstyled">
-                Nos partenaires
-                <li><a href="https://cpasklaire.github.io/CleaLeRoux_2_08062021/">Reservia</a></li>
-                <li><a href="https://cpasklaire.github.io/CleaLeRoux_3_23062021/">OhMyFood</a></li>
-                <li><a href="https://cpasklaire.github.io/CleaLeRoux_4_19072021/">La chouette agence</a></li>  
+              <ul class="list-unstyled row">
+                <span>Nos partenaires </span> 
+                <li class="col"><a href="https://cpasklaire.github.io/CleaLeRoux_2_08062021/">Reservia</a></li>
+                <li class="col"><a href="https://cpasklaire.github.io/CleaLeRoux_3_23062021/">OhMyFood</a></li>
+                <li class="col"><a href="https://cpasklaire.github.io/CleaLeRoux_4_19072021/">La chouette agence</a></li>  
               </ul>
             </nav>
           </div>
 
-          <div class="col">
+          <div class="col col-lg-2">
             <a href="4004.html">Qui sommens nous ?</a>
           </div>
         </div>
       </div>
-    </footer>
+    </footer> 
     
       <script src="/public/js/functions.js"></script>  
       <script src="/public/js/panier.js"></script>

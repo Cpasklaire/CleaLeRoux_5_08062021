@@ -1,7 +1,7 @@
 /*formatage du prix*/
 function formatPrice(price)
 {
-    return (price / 100 ).toString() + '€';
+    return (price / 100.0 ).toString() + '€';
 }
 
 /* Initialisation localStorage*/
@@ -31,14 +31,11 @@ function addToBasket(id_num, color)
 /* promise function */
 function fetchProduct(id)
 {
-    console.log('start fetchProduct');
     let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id.toString();
-    console.log('let fetchProduct');
     return fetch(apiProductListUrl)
     .then(response => response.json())
     .then(data =>
         {
-            console.log(data);
             return data
         }
     )

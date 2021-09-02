@@ -66,4 +66,3 @@ function renderList(data)
         document.getElementById('carte'+i.toString()).appendChild(card);
     }
 }
-

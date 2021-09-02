@@ -1,20 +1,26 @@
 
 /*de localStorage à teddies*/
 let basketItems = getBasketItems();
-console.log(basketItems);
+let total = 0
 for (let i = 0 ; i < basketItems.length; i++)
     {
         basketItems[i].idx = i;
+        
         const basketItem = basketItems[i];
         panierArticle(i);
         fetchProduct(basketItems[i].id)
             .then(data => 
                 {
                     panierDetails(basketItem, data);
-                    panierTotal(data);
+                    total = panierTotal(data, total); 
+                    basketItems[i].somme = total;
                 }
-            );
-    }
+            )
+            .catch(error => console.warn(error));
+    }  
+
+    console.log(basketItems[basketItems.length-1].somme);
+    totalAffichage(basketItems[basketItems.length-1].somme);
 
         /*Création de la ligne par article*/
         function panierArticle(i)
@@ -22,9 +28,10 @@ for (let i = 0 ; i < basketItems.length; i++)
             article = document.createElement('div');
             article.classList.add('row');
             article.id = 'details'+ i.toString();
+
             document.getElementById('article').appendChild(article);
         }
-    
+
         /*Création de l'article*/
         function panierDetails(basketItem, data)
         {
@@ -36,7 +43,7 @@ for (let i = 0 ; i < basketItems.length; i++)
 
             contenu = document.createElement('div');
             contenu.classList.add('col');
-            contenu.innerHTML += '<h2>'+data.name+'</h2><span>'+basketItem.color+'</spam></br><spam>Quantité : '+basketItem.qty+'</span>';
+            contenu.innerHTML += '<h2>'+data.name+'</h2><span>'+basketItem.color+'</span></br><span>Quantité : '+basketItem.qty+'</span>';
 
             document.getElementById('details'+ basketItem.idx.toString()).appendChild(contenu);
 
@@ -47,13 +54,18 @@ for (let i = 0 ; i < basketItems.length; i++)
             document.getElementById('details'+ basketItem.idx.toString()).appendChild(prix);
         }
 
-        function panierTotal(data)
+        function panierTotal(data, total)
         {
-            let total = 0;
-            for (let i = 0 ; i < basketItems.length; i++)
-            {
-                const array = basketItems.length
-            total += Number(data.price);
-            console.log(reducer);
-            }
+            total = total + data.price;
+            console.log(total);
+            return total;            
+        }            
+        
+        function totalAffichage(total)
+        {
+            Tatal = formatPrice(total);
+            tatal = document.createElement('span');
+            tatal.innerHTML += Tatal
+
+            document.getElementById('total').appendChild(tatal);
         }

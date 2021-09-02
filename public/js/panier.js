@@ -1,7 +1,8 @@
-
 /*de localStorage à teddies*/
 let basketItems = getBasketItems();
-let total = 0
+let total = 0;
+renduBasketBadge();
+
 for (let i = 0 ; i < basketItems.length; i++)
     {
         basketItems[i].idx = i;
@@ -11,16 +12,13 @@ for (let i = 0 ; i < basketItems.length; i++)
         fetchProduct(basketItems[i].id)
             .then(data => 
                 {
-                    panierDetails(basketItem, data);
-                    total = panierTotal(data, total); 
-                    basketItems[i].somme = total;
+                    total += data.price; 
+                    data.somme = total;  
+                    panierDetails(basketItem, data);  
                 }
             )
             .catch(error => console.warn(error));
     }  
-
-    console.log(basketItems[basketItems.length-1].somme);
-    totalAffichage(basketItems[basketItems.length-1].somme);
 
         /*Création de la ligne par article*/
         function panierArticle(i)
@@ -52,14 +50,12 @@ for (let i = 0 ; i < basketItems.length; i++)
             prix.innerHTML += '<div class="col">'+formatPrice(data.price)+'</div>';
 
             document.getElementById('details'+ basketItem.idx.toString()).appendChild(prix);
-        }
-
-        function panierTotal(data, total)
-        {
-            total = total + data.price;
-            console.log(total);
-            return total;            
-        }            
+            
+            if (basketItems.length-1 == basketItem.idx)
+            {
+            totalAffichage(data.somme);
+            }
+        }          
         
         function totalAffichage(total)
         {

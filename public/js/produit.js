@@ -96,7 +96,9 @@ fetch(apiProductListUrl)
         document.getElementById('prix').appendChild(price);
     }
 
-    document.getElementById('ajouter').addEventListener('click', function(ajouter) { 
-        //console.log(ajouter.target);
-        addToBasket(id_num, 'vert');
+    document.getElementById('ajouter').addEventListener('click', function(ajouter) 
+    { 
+        console.log(ajouter.target);
+
+        addToBasket(id_num, 'rose');
     });

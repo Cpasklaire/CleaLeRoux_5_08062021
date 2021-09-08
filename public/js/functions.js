@@ -7,17 +7,17 @@ function formatPrice(price)
 /* Initialisation localStorage*/
 function getBasketItems()
 {
-    let basketItemsData = JSON.parse(localStorage.getItem('basketItems'));
-    if (!basketItemsData) basketItemsData=[];
-    return basketItemsData
+    let allBasketItems = JSON.parse(localStorage.getItem('allBasketItems'));
+    if (!allBasketItems) allBasketItems=[];
+    return allBasketItems
 }
 
 function removeItem(id) {
-    var basketItems = getBasketItems()
-    for (var i = 0 ; i < basketItems.length; i++) {
-        if (basketItems[i].id == id) {
-            delete basketItems[i]
-            console.log('id ' + basketItems[i].id + ' removed from basket')
+    var allBasketItems = getBasketItems()
+    for (var i = 0 ; i < allBasketItems.length; i++) {
+        if (allBasketItems[i].id == id) {
+            delete allBasketItems[i]
+            console.log('id ' + allBasketItems[i].id + ' removed from basket')
             break;
         }
     }    
@@ -26,13 +26,14 @@ function removeItem(id) {
 /* Items du localStorage*/
 function addToBasket(id_num, color)
 {
-    let basketItems = getBasketItems();
+    let allBasketItems = getBasketItems();
     let found = false; /*trouver : faux*/
-    for (var i = 0 ; i < basketItems.length; i++) {
-        if (basketItems[i].id == id_num && basketItems[i].color == color) { /*si id=id &&et (||ou) color=color*/
+    for (var i = 0 ; i < allBasketItems.length; i++) 
+    {
+        if (allBasketItems[i].id == id_num && allBasketItems[i].color == color) { /*si id=id &&et (||ou) color=color*/
             found = true;
-            basketItems[i].qty += 1;
-            console.log('id ' + basketItems[i].id + ' quantity changed to ' + basketItems[i].qty)
+            allBasketItems[i].qty += 1;
+            console.log('id ' + allBasketItems[i].id + ' quantity changed to ' + allBasketItems[i].qty)
             break;
         }
     }
@@ -44,17 +45,14 @@ function addToBasket(id_num, color)
             qty:1,
             color: color,
         }        
-        basketItems.push(item);console.log('coucou');
+        allBasketItems.push(item);console.log('coucou');
     }
-
-    // TODO @Clea, @Renaud, move the line below in a function
-    // localStorage.setItem('basketItems', JSON.stringify(basketItemsData))
-    storeBasketItems(basketItems);
-     renduBasketBadge();
+    storeBasketItems(allBasketItems);
+    renderBasketBadge(totalQty);
 } 
 
-function storeBasketItems(basketItems) {
-    localStorage.setItem('basketItems', JSON.stringify(basketItems))
+function storeBasketItems(allBasketItems) {
+    localStorage.setItem('allBasketItems', JSON.stringify(allBasketItems))
 }
 
 /* passer du localStorage au dataTeddies par l'id*/
@@ -72,9 +70,31 @@ function fetchProduct(id)
     .catch(error => console.warn(error));
 }
 
-/*Badge*/
-function renduBasketBadge()
+/* Badge */
+function calculQtyItems()
 {
-    let basketItemsData = getBasketItems();
-    document.getElementById('badge').innerHTML = basketItemsData.length;
+    let totalQty = 0;
+    let allBasketItems = getBasketItems();
+    
+    for (let i = 0 ; i < allBasketItems.length; i++)
+    {              
+        fetchProduct(allBasketItems[i].id)
+            .then(data => 
+                {
+                    totalQty += data.qty; 
+                    data.sommeTeddy = totalQty; 
+                    renderBasketBadge(sommeTeddy)
+                }
+            )
+            .catch(error => console.warn(error));
+    }
+}
+
+
+function renderBasketBadge(sommeTeddy)
+{
+    badge = document.createElement('span');
+    badge.innerHTML += sommeTeddy;
+    console.log(sommeTeddy);
+    document.getElementById('badge').appendChild(badge);
 }

@@ -1,27 +1,27 @@
 /*de localStorage à teddies*/
-let basketItems = getBasketItems();
-let total = 0;
-renduBasketBadge();
+let allBasketItems = getBasketItems();
+let totalPrice = 0;
+renderBasketBadge();
 
-for (let i = 0 ; i < basketItems.length; i++)
+for (let i = 0 ; i < allBasketItems.length; i++)
     {
-        basketItems[i].idx = i;
+        allBasketItems[i].idx = i;
         
-        const basketItem = basketItems[i];
-        panierArticle(i);
-        fetchProduct(basketItems[i].id)
+        const oneBasketItem = allBasketItems[i];
+        renderArticle(i);
+        fetchProduct(allBasketItems[i].id)
             .then(data => 
                 {
-                    total += data.price; 
-                    data.somme = total;  
-                    panierDetails(basketItem, data);  
+                    totalPrice += data.price; 
+                    data.somme = totalPrice;  
+                    renderDetailArticle(oneBasketItem, data);  
                 }
             )
             .catch(error => console.warn(error));
     }  
 
         /*Création de la ligne par article*/
-        function panierArticle(i)
+        function renderArticle(i)
         {
             article = document.createElement('div');
             article.classList.add('row');
@@ -31,37 +31,36 @@ for (let i = 0 ; i < basketItems.length; i++)
         }
 
         /*Création de l'article*/
-        function panierDetails(basketItem, data)
+        function renderDetailArticle(oneBasketItem, data)
         {
             image = document.createElement('div');
             image.classList.add('col');
             image.innerHTML += '<img class="img-thumbnail" alt="Ours en peluche' + data.name + '"src="'+data.imageUrl+'">';
         
-            document.getElementById('details'+ basketItem.idx.toString()).appendChild(image);
+            document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(image);
 
             contenu = document.createElement('div');
             contenu.classList.add('col');
-            contenu.innerHTML += '<h2>'+data.name+'</h2><span>'+basketItem.color+'</span></br><span>Quantité : '+basketItem.qty+'</span>';
+            contenu.innerHTML += '<h2>'+data.name+'</h2><span>'+oneBasketItem.color+'</span></br><span>Quantité : '+oneBasketItem.qty+'</span>';
 
-            document.getElementById('details'+ basketItem.idx.toString()).appendChild(contenu);
+            document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(contenu);
 
             prix = document.createElement('div');
             prix.classList.add('col');
             prix.innerHTML += '<div class="col">'+formatPrice(data.price)+'</div>';
 
-            document.getElementById('details'+ basketItem.idx.toString()).appendChild(prix);
+            document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(prix);
             
-            if (basketItems.length-1 == basketItem.idx)
+            if (allBasketItems.length-1 == oneBasketItem.idx)
             {
-            totalAffichage(data.somme);
+            renderTotalPrice(data.somme);
             }
         }          
         
-        function totalAffichage(total)
+        function renderTotalPrice(totalPrice)
         {
-            Tatal = formatPrice(total);
-            tatal = document.createElement('span');
-            tatal.innerHTML += Tatal
+            total = document.createElement('span');
+            total.innerHTML += formatPrice(totalPrice);
 
-            document.getElementById('total').appendChild(tatal);
+            document.getElementById('total').appendChild(total);
         }

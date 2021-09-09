@@ -12,6 +12,7 @@ function getBasketItems()
     return allBasketItems
 }
 
+/* rajouter un quantité*/
 function removeItem(id) {
     var allBasketItems = getBasketItems()
     for (var i = 0 ; i < allBasketItems.length; i++) {
@@ -27,6 +28,7 @@ function removeItem(id) {
 function addToBasket(id_num, color)
 {
     let allBasketItems = getBasketItems();
+    let totalQty = 0;
     let found = false; /*trouver : faux*/
     for (var i = 0 ; i < allBasketItems.length; i++) 
     {
@@ -45,10 +47,19 @@ function addToBasket(id_num, color)
             qty:1,
             color: color,
         }        
-        allBasketItems.push(item);console.log('coucou');
+        allBasketItems.push(item);
     }
+
+    /*calcul quantité total*/
+    for (let i = 0 ; i < allBasketItems.length; i++)
+    {
+        totalQty += allBasketItems[i].qty; 
+        allBasketItems.sommeTeddy = totalQty;
+        console.log(allBasketItems.sommeTeddy);
+    }
+    
     storeBasketItems(allBasketItems);
-    renderBasketBadge(totalQty);
+    renderBasketBadge(allBasketItems);
 } 
 
 function storeBasketItems(allBasketItems) {
@@ -70,31 +81,13 @@ function fetchProduct(id)
     .catch(error => console.warn(error));
 }
 
-/* Badge */
-function calculQtyItems()
-{
-    let totalQty = 0;
-    let allBasketItems = getBasketItems();
-    
-    for (let i = 0 ; i < allBasketItems.length; i++)
-    {              
-        fetchProduct(allBasketItems[i].id)
-            .then(data => 
-                {
-                    totalQty += data.qty; 
-                    data.sommeTeddy = totalQty; 
-                    renderBasketBadge(sommeTeddy)
-                }
-            )
-            .catch(error => console.warn(error));
-    }
-}
+/* Rendu Badge */
 
-
-function renderBasketBadge(sommeTeddy)
+function renderBasketBadge(allBasketItems)
 {
+
     badge = document.createElement('span');
-    badge.innerHTML += sommeTeddy;
-    console.log(sommeTeddy);
+    badge.innerHTML += allBasketItems.sommeTeddy;
+    console.log(allBasketItems.sommeTeddy);
     document.getElementById('badge').appendChild(badge);
 }

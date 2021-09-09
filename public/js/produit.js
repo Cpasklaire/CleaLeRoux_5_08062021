@@ -68,7 +68,7 @@ fetch(apiProductListUrl)
 
             document.getElementById('couleurappelsm').appendChild(pelageSM);
         }
-    }
+    };
 
     /* Bouton adopter */
     document.getElementById('ajouter').addEventListener('click', function(ajouter) 

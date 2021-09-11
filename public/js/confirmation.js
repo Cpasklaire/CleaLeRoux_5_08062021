@@ -1,14 +1,8 @@
 urlParams = new URLSearchParams(window.location.search);
-let apiProductListUrl = 'http://localhost:3000/api/teddies/order';
+orderId = urlParams.get('order.orderId');
+totalPrice = urlParams.get('totalPrice');
 
-fetch(apiProductListUrl)
-    .then(response => response.json())
-    .then(order => 
-        {       
-            renderTotalPrice(totalPrice);  
-            renderIdentifiant(order);           
-        }   
-    )
+let apiProductListUrl = 'http://localhost:3000/api/teddies/' + order.orderId + totalPrice;
 
 /* Rendu prix total */
 function renderTotalPrice(totalPrice)

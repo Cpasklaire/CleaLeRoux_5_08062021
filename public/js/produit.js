@@ -10,7 +10,7 @@ fetch(apiProductListUrl)
     .then(response => response.json())
     .then(data => 
         {
-            renderBasketBadge(allBasketItems)
+            
             renderProduitTeddy(data);             
         }   
     )

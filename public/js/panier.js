@@ -12,7 +12,7 @@ for (let i = 0 ; i < allBasketItems.length; i++)
         fetchProduct(allBasketItems[i].id)
             .then(data => 
                 {
-                    totalPrice += data.price; 
+                    totalPrice += data.price * oneBasketItem.qty; 
                     data.somme = totalPrice;  
                     renderDetailArticle(oneBasketItem, data);  
                 }
@@ -76,14 +76,15 @@ for (let i = 0 ; i < allBasketItems.length; i++)
 
         function initPageEvents()
 {
-    document.getElementById('btn-order').addEventListener('click', async function(event) {
+    document.getElementById('commande').addEventListener('submit', async function(event) {
         // disable button to prevent multiple clicks by error
         event.target.disabled = true;
         event.stopPropagation();
+        event.preventDefault();
         console.log("we test async/await syntax, here we are before the call to submit order")
         const order = await submitOrder();
         console.log("we test async/await syntax, here we are after the call to submit order")
-        displayOder(order)
+        window.location.href="/confirmation.html?orderId="+order.orderId;
     })
 }
 

@@ -8,6 +8,8 @@ function formatPrice(price)
 function getBasketItems()
 {
     let allBasketItems = JSON.parse(localStorage.getItem('allBasketItems'));
+    renderBasketBadge(allBasketItems);
+    console.log(allBasketItems);
     if (!allBasketItems) allBasketItems=[];
     return allBasketItems
 }
@@ -50,14 +52,14 @@ function addToBasket(id_num, color)
         allBasketItems.push(item);
     }
 
-    /*calcul quantité total*/
+    /*calcul quantité total sortir et non sommeteddy*/
     for (let i = 0 ; i < allBasketItems.length; i++)
     {
         totalQty += allBasketItems[i].qty; 
         allBasketItems.sommeTeddy = totalQty;
         console.log(allBasketItems.sommeTeddy);
     }
-    
+
     storeBasketItems(allBasketItems);
     renderBasketBadge(allBasketItems);
 } 
@@ -84,10 +86,13 @@ function fetchProduct(id)
 /* Rendu Badge */
 
 function renderBasketBadge(allBasketItems)
-{
-
-    badge = document.createElement('span');
-    badge.innerHTML += allBasketItems.sommeTeddy;
-    console.log(allBasketItems.sommeTeddy);
-    document.getElementById('badge').appendChild(badge);
+{ console.log(allBasketItems.sommeTeddy);
+    if(!allBasketItems)
+    {
+        document.getElementById('badge').innerHTML = "0";
+    }
+    else
+    {
+    document.getElementById('badge').innerHTML = allBasketItems.sommeTeddy;
+    }
 }

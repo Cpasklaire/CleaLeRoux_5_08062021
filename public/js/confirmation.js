@@ -6,7 +6,7 @@ fetch(apiProductListUrl)
     .then(order => 
         {       
             renderTotalPrice(totalPrice);  
-            renderIdentifiant(order.orderId);           
+            renderIdentifiant(order);           
         }   
     )
 

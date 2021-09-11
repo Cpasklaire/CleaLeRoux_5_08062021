@@ -66,7 +66,7 @@ function renderTotalPrice(totalPrice)
 };
 
 /* Bouton pour vider le panier */
-document.getElementById('supprimer').addEventListener('click', function(supprimer) 
+document.getElementById('supprimer').addEventListener('click', function() 
 { 
     localStorage.setItem('allBasketItems', null);
     document.location.reload();
@@ -83,7 +83,8 @@ document.getElementById('supprimer').addEventListener('click', function(supprime
         console.log("avant le submit order");
         const order = await submitOrder();
         console.log("après submit order");
-        window.location.href="/confirmation.html?orderId="+order.orderId;
+        console.log(order.orderId);
+        window.location.href="/confirmation.html?orderId="+order.orderId+totalPrice;
     })
 }
 

@@ -69,19 +69,20 @@ function renderTotalPrice(totalPrice)
 document.getElementById('supprimer').addEventListener('click', function(supprimer) 
 { 
     localStorage.setItem('allBasketItems', null);
-    supprimer.target.disabled = true;
+    document.location.reload();
 });
 
         function initPageEvents()
 {
-    document.getElementById('commande').addEventListener('submit', async function(event) {
-        // disable button to prevent multiple clicks by error
+    document.getElementById('commande').addEventListener('submit', async function(event) 
+    {
+        // disable button pour prévenir les multi click par erreur
         event.target.disabled = true;
         event.stopPropagation();
         event.preventDefault();
-        console.log("we test async/await syntax, here we are before the call to submit order")
+        console.log("avant le submit order");
         const order = await submitOrder();
-        console.log("we test async/await syntax, here we are after the call to submit order")
+        console.log("après submit order");
         window.location.href="/confirmation.html?orderId="+order.orderId;
     })
 }
@@ -89,35 +90,43 @@ document.getElementById('supprimer').addEventListener('click', function(supprime
 initPageEvents();
 
 const url = 'http://localhost:3000/api/teddies/order';
-async function submitOrder() {
-    console.log('submitorder starts')
-    const data = {
-        contact: {
-            firstName: firstName,
-            lastName: lastName,
-            address: address,
-            city: city,
-            email: email
+async function submitOrder() 
+{
+    console.log('début de soumission')
+    const data = 
+    {
+        contact: 
+        {
+            firstName: document.getElementsByName('firstname').value,
+            lastName: document.getElementsByName('lastName').value,
+            address: document.getElementsByName('address').value,
+            city: document.getElementsByName('city').value,
+            email: document.getElementsByName('email').value,
         },
-        products: [allBasketItems,'5beaa8bf1c9d440000a57d94']
+        products: [allBasketItems]
     }
-    const response = await fetch(url, {
+    const response = await fetch(url, 
+        {
         method: 'POST',
-        headers: {
+        headers: 
+        {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
     });
     let order = null;
-    if (response.status === 201) {
+    if (response.status === 201) 
+    {
         order = await response.json()
         console.log("Commande passée avec succès")
         console.log("Order ID " + order.orderId)
         console.log(order)
-    } else {
+    } 
+    else 
+    {
         console.log('ERROR')
         document.getElementById('btn-order').disabled = false;
     }
-    console.log('submitorder ends');
+    console.log('fin de soumission');
     return order;
 }

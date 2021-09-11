@@ -1,7 +1,6 @@
 /*de localStorage à teddies*/
 let allBasketItems = getBasketItems();
 let totalPrice = 0;
-renderBasketBadge(allBasketItems);
 
 for (let i = 0 ; i < allBasketItems.length; i++)
     {
@@ -20,59 +19,58 @@ for (let i = 0 ; i < allBasketItems.length; i++)
             .catch(error => console.warn(error));
     }  
 
-        /*Création de la ligne par article*/
-        function renderArticle(i)
-        {
-            article = document.createElement('div');
-            article.classList.add('row');
-            article.id = 'details'+ i.toString();
+/*Création de la ligne par article*/
+function renderArticle(i)
+{
+    article = document.createElement('div');
+    article.classList.add('row');
+    article.id = 'details'+ i.toString();
 
-            document.getElementById('article').appendChild(article);
-        }
+    document.getElementById('article').appendChild(article);
+}
 
-        /*Création de l'article*/
-        function renderDetailArticle(oneBasketItem, data)
-        {
-            image = document.createElement('div');
-            image.classList.add('col');
-            image.innerHTML += '<img class="img-thumbnail" alt="Ours en peluche' + data.name + '"src="'+data.imageUrl+'">';
+/*Création de l'article*/
+function renderDetailArticle(oneBasketItem, data)
+{
+    image = document.createElement('div');
+    image.classList.add('col');
+    image.innerHTML += '<img class="img-thumbnail" alt="Ours en peluche' + data.name + '"src="'+data.imageUrl+'">';
         
-            document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(image);
+    document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(image);
 
-            contenu = document.createElement('div');
-            contenu.classList.add('col');
-            contenu.innerHTML += '<h2>'+data.name+'</h2><span>'+oneBasketItem.color+'</span></br><span>Quantité : '+oneBasketItem.qty+'</span>';
+    contenu = document.createElement('div');
+    contenu.classList.add('col');
+    contenu.innerHTML += '<h2>'+data.name+'</h2><span>'+oneBasketItem.color+'</span></br><span>Quantité : '+oneBasketItem.qty+'</span>';
 
-            document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(contenu);
+    document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(contenu);
 
-            prix = document.createElement('div');
-            prix.classList.add('col');
-            prix.innerHTML += '<div class="col">'+formatPrice(data.price)+'</div>';
+    prix = document.createElement('div');
+    prix.classList.add('col');
+    prix.innerHTML += '<div class="col">'+formatPrice(data.price)+'</div>';
 
-            document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(prix);
+    document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(prix);
             
-            if (allBasketItems.length-1 == oneBasketItem.idx)
-            {
-            renderTotalPrice(data.somme);
-            }
-        }          
+    if (allBasketItems.length-1 == oneBasketItem.idx)
+    {
+        renderTotalPrice(data.somme);
+    }
+}          
         
-        /* Rendu prix total */
-        function renderTotalPrice(totalPrice)
-        {
-            total = document.createElement('span');
-            total.innerHTML += formatPrice(totalPrice);
+/* Rendu prix total */
+function renderTotalPrice(totalPrice)
+{
+    total = document.createElement('span');
+    total.innerHTML += formatPrice(totalPrice);
 
-            document.getElementById('total').appendChild(total);
-        };
+    document.getElementById('total').appendChild(total);
+};
 
-        /*Boutton supprimer
-
-        document.getElementById('supprimer').addEventListener('click', function(deleteArticle)
-        {     console.log(deleteArticle.target);
-                //localStorage.setItem('allBasketItems', allBasketItems[i].qty-1);
-                
-        }); revoir avec boucle*/
+/* Bouton pour vider le panier */
+document.getElementById('supprimer').addEventListener('click', function(supprimer) 
+{ 
+    localStorage.setItem('allBasketItems', null);
+    supprimer.target.disabled = true;
+});
 
         function initPageEvents()
 {
@@ -95,11 +93,11 @@ async function submitOrder() {
     console.log('submitorder starts')
     const data = {
         contact: {
-            firstName: document.firstName,
-            lastName: "Faw",
-            address: "10A corniche des oliviers",
-            city: "94235 Ivry sur Seine",
-            email: "sam@testonorico.com"
+            firstName: firstName,
+            lastName: lastName,
+            address: address,
+            city: city,
+            email: email
         },
         products: [allBasketItems,'5beaa8bf1c9d440000a57d94']
     }
@@ -120,6 +118,6 @@ async function submitOrder() {
         console.log('ERROR')
         document.getElementById('btn-order').disabled = false;
     }
-    console.log('submitorder ends')
+    console.log('submitorder ends');
     return order;
 }

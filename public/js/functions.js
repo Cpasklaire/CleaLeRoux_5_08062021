@@ -8,8 +8,6 @@ function formatPrice(price)
 function getBasketItems()
 {
     let allBasketItems = JSON.parse(localStorage.getItem('allBasketItems'));
-    renderBasketBadge(allBasketItems);
-    console.log(allBasketItems);
     if (!allBasketItems) allBasketItems=[];
     return allBasketItems
 }
@@ -30,7 +28,6 @@ function removeItem(id) {
 function addToBasket(id_num, color)
 {
     let allBasketItems = getBasketItems();
-    let totalQty = 0;
     let found = false; /*trouver : faux*/
     for (var i = 0 ; i < allBasketItems.length; i++) 
     {
@@ -52,19 +49,12 @@ function addToBasket(id_num, color)
         allBasketItems.push(item);
     }
 
-    /*calcul quantité total sortir et non sommeteddy*/
-    for (let i = 0 ; i < allBasketItems.length; i++)
-    {
-        totalQty += allBasketItems[i].qty; 
-        allBasketItems.sommeTeddy = totalQty;
-        console.log(allBasketItems.sommeTeddy);
-    }
-
     storeBasketItems(allBasketItems);
-    renderBasketBadge(allBasketItems);
+    renderBasketBadge();
 } 
 
-function storeBasketItems(allBasketItems) {
+function storeBasketItems(allBasketItems) 
+{
     localStorage.setItem('allBasketItems', JSON.stringify(allBasketItems))
 }
 
@@ -85,14 +75,16 @@ function fetchProduct(id)
 
 /* Rendu Badge */
 
-function renderBasketBadge(allBasketItems)
-{ console.log(allBasketItems.sommeTeddy);
-    if(!allBasketItems)
+function renderBasketBadge()
+{
+    let allBasketItems = getBasketItems();
+    let totalTemp=0;
+    for (let i = 0 ; i < allBasketItems.length; i++) 
     {
-        document.getElementById('badge').innerHTML = "0";
+        totalTemp += allBasketItems[i].qty;
     }
-    else
-    {
-    document.getElementById('badge').innerHTML = allBasketItems.sommeTeddy;
-    }
+    document.getElementById('badge').innerHTML = totalTemp;  
 }
+
+/*a chaque lancement de page*/
+renderBasketBadge();

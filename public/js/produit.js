@@ -9,8 +9,7 @@ let apiProductListUrl = 'http://localhost:3000/api/teddies/' + id_num.toString()
 fetch(apiProductListUrl)
     .then(response => response.json())
     .then(data => 
-        {
-            
+        {       
             renderProduitTeddy(data);             
         }   
     )
@@ -74,5 +73,5 @@ fetch(apiProductListUrl)
     document.getElementById('ajouter').addEventListener('click', function(ajouter) 
     { 
         console.log(ajouter.target);
-        addToBasket(id_num, 'rose');
+        addToBasket(id_num, 'color');
     });

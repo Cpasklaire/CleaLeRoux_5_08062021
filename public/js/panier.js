@@ -84,7 +84,7 @@ document.getElementById('supprimer').addEventListener('click', function()
         const order = await submitOrder();
         console.log("après submit order");
         console.log(order.orderId);
-        window.location.href="/confirmation.html?orderId="+order.orderId+totalPrice;
+        window.location.href="/public/page/confirmation.html?orderId="+order.orderId+"prix="+totalPrice;
     })
 }
 
@@ -98,13 +98,13 @@ async function submitOrder()
     {
         contact: 
         {
-            firstName: document.getElementsByName('firstname').value,
-            lastName: document.getElementsByName('lastName').value,
-            address: document.getElementsByName('address').value,
-            city: document.getElementsByName('city').value,
-            email: document.getElementsByName('email').value,
+            firstName: document.getElementsByName('firstName')[0].value,
+            lastName: document.getElementsByName('lastName')[0].value,
+            address: document.getElementsByName('address')[0].value,
+            city: document.getElementsByName('city')[0].value,
+            email: document.getElementsByName('email')[0].value,
         },
-        products: [allBasketItems]
+        products: ['5beaabe91c9d440000a57d96']
     }
     const response = await fetch(url, 
         {

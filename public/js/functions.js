@@ -12,7 +12,7 @@ function getBasketItems()
     return allBasketItems
 }
 
-/* rajouter un quantité*/
+/* rajouter une quantité*/
 function removeItem(id) {
     var allBasketItems = getBasketItems()
     for (var i = 0 ; i < allBasketItems.length; i++) {

@@ -66,4 +66,27 @@
     {
         margin-bottom: 22%;
     }
+
+    .panier
+    {
+        margin-top: 30%;
+        .colimage
+        {
+            display: none;
+        }
+        .container
+        {
+            margin-bottom: 5%;
+            .row
+            {
+                height: 100px;
+                
+            }
+        }
+    }
+
+    .confirmation
+    {
+        margin-top: 30%;
+    }
 }

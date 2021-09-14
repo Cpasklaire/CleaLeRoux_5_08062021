@@ -34,6 +34,7 @@ function renderDetailArticle(oneBasketItem, data)
 {
     image = document.createElement('div');
     image.classList.add('col');
+    image.classList.add('colimage');
     image.innerHTML += '<img class="img-thumbnail" alt="Ours en peluche' + data.name + '"src="'+data.imageUrl+'">';
         
     document.getElementById('details'+ oneBasketItem.idx.toString()).appendChild(image);

@@ -84,6 +84,7 @@ function renderBasketBadge()
         totalTemp += allBasketItems[i].qty;
     }
     document.getElementById('badge').innerHTML = totalTemp;  
+    document.getElementById('badgemobile').innerHTML = totalTemp; 
 }
 
 /*a chaque lancement de page*/

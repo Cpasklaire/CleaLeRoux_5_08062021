@@ -84,7 +84,8 @@ document.getElementById('supprimer').addEventListener('click', function()
         const order = await submitOrder();
         console.log("après submit order");
         console.log(order.orderId);
-        window.location.href="/public/page/confirmation.html?orderId="+order.orderId+"prix="+totalPrice;
+        window.location.href="/public/page/confirmation.html?orderId="+order.orderId;
+        localStorage.setItem('allBasketItems', null);
     })
 }
 

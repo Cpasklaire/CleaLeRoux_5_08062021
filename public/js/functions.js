@@ -24,7 +24,7 @@ function getBasketItemIds()
     return basketItemIds;
 }
 
-/* rajouter une quantité*/
+/* supprimer un ours
 function removeItem(id) {
     var allBasketItems = getBasketItems()
     for (var i = 0 ; i < allBasketItems.length; i++) {
@@ -34,7 +34,7 @@ function removeItem(id) {
             break;
         }
     }    
-}
+}*/
 
 /* Items du localStorage*/
 function addToBasket(id_num, color)

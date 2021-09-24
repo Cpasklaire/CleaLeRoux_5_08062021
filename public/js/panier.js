@@ -1,6 +1,7 @@
 /*de localStorage à teddies*/
 let allBasketItems = getBasketItems();
 let totalPrice = 0;
+const url = 'http://localhost:3000/api/teddies/order';
 
 for (let i = 0 ; i < allBasketItems.length; i++)
     {
@@ -66,34 +67,6 @@ function renderTotalPrice(totalPrice)
     document.getElementById('total').appendChild(total);
 };
 
-/* Bouton pour vider le panier */
-document.getElementById('supprimer').addEventListener('click', function() 
-{ 
-    localStorage.setItem('allBasketItems', null);
-    document.location.reload();
-});
-
-/*bouton commander*/
-function initPageEvents()
-{
-    document.getElementById('commande').addEventListener('submit', async function(event) 
-    {
-        // disable button pour prévenir les multi click par erreur
-        event.target.disabled = true;
-        event.stopPropagation();
-        event.preventDefault();
-        console.log("avant le submit order");
-        const order = await submitOrder();
-        console.log("après submit order");
-        console.log(order.orderId);
-        window.location.href="/public/page/confirmation.html?orderId="+order.orderId;
-        localStorage.setItem('allBasketItems', null);
-    })
-}
-
-initPageEvents();
-
-const url = 'http://localhost:3000/api/teddies/order';
 async function submitOrder() 
 {
     console.log('début de soumission')
@@ -134,3 +107,30 @@ async function submitOrder()
     console.log('fin de soumission');
     return order;
 }
+
+function initPageEvents()
+{
+    /* Bouton pour vider le panier */
+    document.getElementById('supprimer').addEventListener('click', function() 
+    { 
+        localStorage.setItem('allBasketItems', null);
+        document.location.reload();
+    });
+
+    /*bouton commander*/
+    document.getElementById('commande').addEventListener('submit', async function(event) 
+    {
+        // disable button pour prévenir les multi click par erreur
+        event.target.disabled = true;
+        event.stopPropagation();
+        event.preventDefault();
+        console.log("avant le submit order");
+        const order = await submitOrder();
+        console.log("après submit order");
+        console.log(order.orderId);
+        window.location.href="/public/page/confirmation.html?orderId="+order.orderId;
+        localStorage.setItem('allBasketItems', null);
+    })
+}
+
+initPageEvents();

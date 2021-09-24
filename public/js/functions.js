@@ -1,7 +1,7 @@
 /*formatage du prix*/
 function formatPrice(price)
 {
-    return (price / 100.0 ).toString() + '€';
+    return Math.round(price / 100.0 ).toFixed(2) + '€';
 }
 
 /* Initialisation localStorage*/

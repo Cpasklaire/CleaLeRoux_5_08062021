@@ -12,6 +12,18 @@ function getBasketItems()
     return allBasketItems
 }
 
+/* tableau ID panier */
+function getBasketItemIds()
+{
+    let basketItems = getBasketItems();
+    let basketItemIds = [];
+        for (var i = 0 ; i < basketItems.length; i++)
+        {
+            basketItemIds.push(basketItems[i].id);
+        }
+    return basketItemIds;
+}
+
 /* rajouter une quantité*/
 function removeItem(id) {
     var allBasketItems = getBasketItems()

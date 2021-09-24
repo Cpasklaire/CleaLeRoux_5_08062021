@@ -106,7 +106,7 @@ async function submitOrder()
             city: document.getElementsByName('city')[0].value,
             email: document.getElementsByName('email')[0].value,
         },
-        products: ['5beaabe91c9d440000a57d96']
+        products: getBasketItemIds()
     }
     const response = await fetch(url, 
         {

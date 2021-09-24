@@ -72,6 +72,6 @@ fetch(apiProductListUrl)
     /* Bouton adopter */
     document.getElementById('ajouter').addEventListener('click', function(ajouter) 
     { 
-        console.log(ajouter.target);
+        //console.log(ajouter.target);
         addToBasket(id_num, 'color');
     });

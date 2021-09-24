@@ -73,7 +73,8 @@ document.getElementById('supprimer').addEventListener('click', function()
     document.location.reload();
 });
 
-        function initPageEvents()
+/*bouton commander*/
+function initPageEvents()
 {
     document.getElementById('commande').addEventListener('submit', async function(event) 
     {

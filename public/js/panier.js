@@ -69,6 +69,7 @@ function renderTotalPrice(totalPrice)
 
 async function submitOrder() 
 {
+
     console.log('début de soumission')
     const data = 
     {
@@ -124,6 +125,12 @@ function initPageEvents()
         event.target.disabled = true;
         event.stopPropagation();
         event.preventDefault();
+        if(allBasketItems.length == 0)
+        {
+            document.getElementById('panier').innerHTML += '<h5>Votre panier est vide, adoptez d’abord un <a href="../../index.html">ourson<a><h5>';
+
+            return
+        }
         console.log("avant le submit order");
         const order = await submitOrder();
         console.log("après submit order");
@@ -134,3 +141,4 @@ function initPageEvents()
 }
 
 initPageEvents();
+

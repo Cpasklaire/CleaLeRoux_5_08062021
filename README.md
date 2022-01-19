@@ -25,7 +25,8 @@ Clonner le gitHub
 Lancer un `npm install`
 
 #Lancer#
-`npm start`
+`cd .\backend\`
+`node server`
 
 Technologie : sass, bootstrap, Node.js
 HTML, CSS, JavaScript
